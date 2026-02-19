@@ -27,6 +27,7 @@
               {
                 "group": "Ascend NPUs",
                 "pages": [
+                  "docs/hardware-platforms/ascend-npus/SGLang installation with NPUs support",
                   "docs/hardware-platforms/ascend-npus/Support Features on Ascend NPU",
                   "docs/hardware-platforms/ascend-npus/Support Models on Ascend NPU",
                   "docs/hardware-platforms/ascend-npus/DeepSeek Examples",
@@ -37,7 +38,8 @@
                   "docs/hardware-platforms/ascend-npus/Qwen3.5",
                   "docs/hardware-platforms/ascend-npus/GLM-5"
                 ]
-              }
+              },
+              "docs/hardware-platforms/xpu"
             ]
           }
         ]
