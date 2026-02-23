@@ -70,7 +70,7 @@ For basic API usage and request examples, please refer to:
 
 GLM-4.7-Flash supports Thinking mode by default. Enable the reasoning parser during deployment to separate the thinking and the content sections:
 
-```shell
+```shell Command
 python -m sglang.launch_server \
   --model zai-org/GLM-4.7-Flash \
   --reasoning-parser glm45 \
@@ -82,7 +82,7 @@ python -m sglang.launch_server \
 
 **Streaming with Thinking Process:**
 
-```python
+```python Example
 from openai import OpenAI
 
 client = OpenAI(
@@ -131,7 +131,7 @@ print()
 
 **Output Example:**
 
-```
+```text Output
 =============== Thinking =================
 To solve this problem, I need to calculate 15% of 240.
 Step 1: Convert 15% to decimal: 15% = 0.15
@@ -148,7 +148,7 @@ The answer is 36. To find 15% of 240, we multiply 240 by 0.15, which equals 36.
 
 GLM-4.7-Flash supports tool calling capabilities. Enable the tool call parser:
 
-```shell
+```shell Command
 python -m sglang.launch_server \
   --model zai-org/GLM-4.7-Flash \
   --reasoning-parser glm45 \
@@ -161,7 +161,7 @@ python -m sglang.launch_server \
 
 **Python Example (with Thinking Process):**
 
-```python
+```python Example
 from openai import OpenAI
 
 client = OpenAI(
@@ -255,7 +255,7 @@ print()
 
 **Output Example:**
 
-```
+```text Output
 =============== Thinking =================
 The user is asking for the weather in Beijing. I have the get_weather function available which can provide weather information for a location. The required parameter is "location" and the
  user has provided "Beijing". There's an optional parameter "unit" for temperature unit, but the user hasn't specified which unit they prefer, and since it's optional, I should not ask about it or make up a value for it. I'll call the function with just the location parameter.I'll check the current weather in Beijing for you.
@@ -273,7 +273,7 @@ Tool Call: get_weather
 
 **Handling Tool Call Results:**
 
-```python
+```python Example
 # After getting the tool call, execute the function
 def get_weather(location, unit="celsius"):
     # Your actual weather API call here
@@ -362,7 +362,7 @@ For each concurrency level, configure `num_prompts` to simulate realistic user l
 
 - **Model Deployment**
 
-```bash
+```bash Command
 python -m sglang.launch_server \
   --model zai-org/GLM-4.7-Flash \
   --attention-backend triton \
@@ -371,7 +371,7 @@ python -m sglang.launch_server \
 
 - Low Concurrency (Latency-Optimized)
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -383,7 +383,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -425,7 +425,7 @@ Max ITL (ms):                            18.50
 
 - Medium Concurrency (Balanced)
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -437,7 +437,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -479,7 +479,7 @@ Max ITL (ms):                            763.13
 
 - High Concurrency (Throughput-Optimized)
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -490,7 +490,7 @@ python -m sglang.bench_serving \
   --max-concurrency 100 \
   --request-rate inf
 ```
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -535,7 +535,7 @@ Max ITL (ms):                            1369.20
 
 - Low Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -546,7 +546,7 @@ python -m sglang.bench_serving \
   --max-concurrency 1 \
   --request-rate inf
 ```
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -588,7 +588,7 @@ Max ITL (ms):                            19.96
 
 - Medium Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -599,7 +599,7 @@ python -m sglang.bench_serving \
   --max-concurrency 16 \
   --request-rate inf
 ```
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -641,7 +641,7 @@ Max ITL (ms):                            90.48
 
 - High Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -652,7 +652,7 @@ python -m sglang.bench_serving \
   --max-concurrency 64 \
   --request-rate inf
 ```
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -696,7 +696,7 @@ Max ITL (ms):                            117.72
 
 - Low Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -707,7 +707,7 @@ python -m sglang.bench_serving \
   --max-concurrency 1 \
   --request-rate inf
 ```
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -749,7 +749,7 @@ Max ITL (ms):                            19.84
 
 - Medium Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -760,7 +760,7 @@ python -m sglang.bench_serving \
   --max-concurrency 16 \
   --request-rate inf
 ```
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -802,7 +802,7 @@ Max ITL (ms):                            4282.01
 
 - High Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.7-Flash \
@@ -813,7 +813,7 @@ python -m sglang.bench_serving \
   --max-concurrency 64 \
   --request-rate inf
 ```
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -885,7 +885,7 @@ Document model accuracy on standard benchmarks:
 
 - Benchmark Command
 
-```bash
+```bash Command
 python -m sglang.test.few_shot_gsm8k \
   --num-questions 200 \
   --port 30000
@@ -893,7 +893,7 @@ python -m sglang.test.few_shot_gsm8k \
 
 - Result
 
-```
+```text Output
 Accuracy: 0.845
 Invalid: 0.000
 Latency: 8.431 s

@@ -42,7 +42,7 @@ Currently, DeepEP and Mooncake only support cases where `ep_size = tp_size`. For
 
 Launch with DeepEP and DeepGEMM for DeepSeek-V3:
 
-```bash
+```bash Command
 python -m sglang.launch_server --model-path deepseek-ai/DeepSeek-V3 --moe-a2a-backend deepep --moe-runner-backend deep_gemm --tp 8 --ep 8
 ```
 
@@ -60,7 +60,7 @@ The framework centers on `FusedMoE` as the unified entry point for a single, ext
 
 This design supports multiple backends via `--moe-a2a-backend` and `--moe-runner-backend`, with quantization integrated through a standardized `apply()` method. The computation flow ensures modularity:
 
-```
+```text Output
 [input_hidden_states]
           |
           v
@@ -119,7 +119,7 @@ SGLang's EP employs advanced overlap techniques to hide communication latency be
 
 TBO splits requests into micro-batches, interleaving attention computation with dispatch/combine operations. Yield points in the execution graph allow pausing for overlaps, increasing overall throughput without peak memory spikes:
 
-```python
+```python Example
 operations = [
     self._forward_attn,
     YieldOperation(),  # Overlap with dispatch of prior micro-batch
@@ -152,7 +152,7 @@ For more details, refer to the [EPLB Section in the Large-Scale EP Blog](https:/
 When utilizing speculative decoding with MTP on MoE architectures, use the `--speculative-moe-runner-backend` and `--speculative-moe-a2a-backend` arguments to customize the MoE layer behavior for the draft model. While they default to the target model’s settings, users can differentiate them for varying precisions between target and draft models.
 
 For model like `nvidia/DeepSeek-R1-0528-NVFP4-v2`, the target model uses NVFP4 precision while the draft model uses BF16. To apply `flashinfer_trtllm` kernel for target MoE layer while falling back to triton fused MoE kernel for draft MoE layer, users can set the arguments as follows:
-```
+```text Output
 ...
 --moe-runner-backend flashinfer_trtllm \
 --speculative-moe-runner-backend triton \
@@ -190,7 +190,7 @@ Ant-moving Function can be enabled for both the dispatch and combine phases via 
 `DEEPEP_NORMAL_LONG_SEQ_PER_ROUND_TOKENS * DEEPEP_NORMAL_LONG_SEQ_ROUND` means input sequence length. When the input sequence length exceeds 8192, it is recommended to enable the ant-moving function in both dispatch and combine phase.
 
 The environment variable `HCCL_BUFFSIZE` is used to configure the buffer size (MB) actually allocated. Its calculation formula is as follows:
-```
+```text Output
 # Enable Ant-moving Function
 HCCL_BUFFSIZE >= 2 * (102MB + 4MB + DEEPEP_NORMAL_LONG_SEQ_PER_ROUND_TOKENS * (hidden_size + hidden_size + hidden_size) * topk) + PADDING_BUFFSIZE
 

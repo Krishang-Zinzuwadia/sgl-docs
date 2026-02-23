@@ -32,21 +32,21 @@ A list of LLMs have been optimized on Intel GPU, and more are on the way:
             <Step title="Creation & Activation">
                 Create and activate a conda environment.
 
-                ```bash
+                ```bash Command
                 conda create -n sgl-xpu python=3.12 -y
                 conda activate sgl-xpu  
                 ```
             </Step>
             <Step title="Install PyTorch and Dependencies">
                 Set PyTorch XPU as primary pip install channel to avoid installing the larger CUDA-enabled version and prevent potential runtime issues.
-                ```bash
+                ```bash Command
                 pip3 install torch==2.9.0+xpu torchao torchvision torchaudio pytorch-triton-xpu==3.5.0 --index-url https://download.pytorch.org/whl/xpu
                 pip3 install xgrammar --no-deps # xgrammar will introduce CUDA-enabled triton which might conflict with XPU
                 ```
             </Step>
             <Step title="Cloning">
                 Clone the SGLang code
-                ```bash
+                ```bash Command
                 git clone https://github.com/sgl-project/sglang.git
                 cd sglang
                 git checkout <YOUR-DESIRED-VERSION>
@@ -54,14 +54,14 @@ A list of LLMs have been optimized on Intel GPU, and more are on the way:
             </Step>
             <Step title="Configure Build File">
                 Use dedicated toml file
-                ```bash
+                ```bash Command
                 cd python
                 cp pyproject_xpu.toml pyproject.toml
                 ```
             </Step>
             <Step title="Build and Install">
                 Install SGLang dependent libs, and build SGLang main package
-                ```bash
+                ```bash Command
                 pip install --upgrade pip setuptools
                 pip install -v .
                 ```
@@ -77,7 +77,7 @@ A list of LLMs have been optimized on Intel GPU, and more are on the way:
 
 Example command to launch SGLang serving:
 
-```bash
+```bash Command
 python -m sglang.launch_server       \
     --model <MODEL_ID_OR_PATH>       \
     --trust-remote-code              \
@@ -93,7 +93,7 @@ python -m sglang.launch_server       \
 
 You can benchmark the performance via the `bench_serving` script. Run the command in another terminal.
 
-```bash
+```bash Command
 python -m sglang.bench_serving   \
     --dataset-name random        \
     --random-input-len 1024      \
@@ -105,7 +105,7 @@ python -m sglang.bench_serving   \
 
 The detail explanations of the parameters can be looked up by the command:
 
-```bash
+```bash Command
 python -m sglang.bench_serving -h
 ```
 

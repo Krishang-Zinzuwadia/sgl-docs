@@ -67,7 +67,7 @@ For basic API usage and request examples, please refer to:
 
 DeepSeek-R1 supports advanced reasoning capabilities with built-in thinking process. Enable the reasoning parser during deployment to separate the thinking and content sections:
 
-```shell
+```shell Command
 python -m sglang.launch_server \
   --model-path deepseek-ai/DeepSeek-R1-0528 \
   --reasoning-parser deepseek-r1 \
@@ -76,7 +76,7 @@ python -m sglang.launch_server \
 
 **Streaming with Thinking Process:**
 
-```python
+```python Example
 from openai import OpenAI
 
 client = OpenAI(
@@ -125,7 +125,7 @@ print()
 
 **Output Example:**
 
-```text
+```text Output
 =============== Thinking =================
 To solve this problem, I need to calculate 15% of 240.
 Step 1: Convert 15% to decimal: 15% = 0.15
@@ -142,7 +142,7 @@ The answer is 36. To find 15% of 240, we multiply 240 by 0.15, which equals 36.
 
 DeepSeek-R1 supports tool calling capabilities. Enable the tool call parser:
 
-```shell
+```shell Command
 python -m sglang.launch_server \
   --model-path deepseek-ai/DeepSeek-R1-0528 \
   --reasoning-parser deepseek-r1 \
@@ -153,7 +153,7 @@ python -m sglang.launch_server \
 
 **Python Example (with Thinking Process):**
 
-```python
+```python Example
 from openai import OpenAI
 
 client = OpenAI(
@@ -235,7 +235,7 @@ print()
 
 **Output Example:**
 
-```text
+```text Output
 =============== Thinking =================
 The user is asking about the weather in Beijing. I need to use the get_weather function to retrieve this information.
 I should call the function with location="Beijing".
@@ -255,7 +255,7 @@ I should call the function with location="Beijing".
 
 **Handling Tool Call Results:**
 
-```python
+```python Example
 # After getting the tool call, execute the function
 def get_weather(location, unit="celsius"):
     # Your actual weather API call here
@@ -344,7 +344,7 @@ For each concurrency level, configure `num_prompts` to simulate realistic user l
 
 - **Model Deployment**
 
-```bash
+```bash Command
 python -m sglang.launch_server \
   --model-path deepseek-ai/DeepSeek-R1-0528 \
   --tp 8
@@ -352,7 +352,7 @@ python -m sglang.launch_server \
 
 - Low Concurrency (Latency-Optimized)
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -364,7 +364,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -405,7 +405,7 @@ Max ITL (ms):                            15.45
 
 - Medium Concurrency (Balanced)
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -417,7 +417,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -458,7 +458,7 @@ Max ITL (ms):                            461.90
 
 - High Concurrency (Throughput-Optimized)
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -470,7 +470,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -513,7 +513,7 @@ Max ITL (ms):                            2052.85
 
 - Low Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -525,7 +525,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -566,7 +566,7 @@ Max ITL (ms):                            15.18
 
 - Medium Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -578,7 +578,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -619,7 +619,7 @@ Max ITL (ms):                            226.59
 
 - High Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -631,7 +631,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -674,7 +674,7 @@ Max ITL (ms):                            237.91
 
 - Low Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -686,7 +686,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -727,7 +727,7 @@ Max ITL (ms):                            14.06
 
 - Medium Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -739,7 +739,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -780,7 +780,7 @@ Max ITL (ms):                            1471.36
 
 - High Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model deepseek-ai/DeepSeek-R1-0528 \
@@ -792,7 +792,7 @@ python -m sglang.bench_serving \
   --request-rate inf
 ```
 
-```
+```text Output
 ============ Serving Benchmark Result ============
 Backend:                                 sglang
 Traffic request rate:                    inf
@@ -863,7 +863,7 @@ Document model accuracy on standard benchmarks:
 
 - Benchmark Command
 
-```bash
+```bash Command
 python3 benchmark/gsm8k/bench_sglang.py \
   --num-shots 8 \
   --num-questions 1316 \
@@ -872,7 +872,7 @@ python3 benchmark/gsm8k/bench_sglang.py \
 
 **Test Results:**
 
-```
+```text Output
 Accuracy: 0.959
 Invalid: 0.000
 Latency: 29.185 s

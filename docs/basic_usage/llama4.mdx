@@ -13,7 +13,7 @@ Ongoing optimizations are tracked in the [Roadmap](https://github.com/sgl-projec
 
 To serve Llama 4 models on 8xH100/H200 GPUs:
 
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model-path meta-llama/Llama-4-Scout-17B-16E-Instruct \
   --tp 8 \
@@ -43,7 +43,7 @@ python3 -m sglang.launch_server \
 
 **Usage**:
 Add arguments `--speculative-draft-model-path`, `--speculative-algorithm`, `--speculative-num-steps`, `--speculative-eagle-topk` and `--speculative-num-draft-tokens` to enable this feature. For example:
-```
+```text Output
 python3 -m sglang.launch_server \
   --model-path meta-llama/Llama-4-Maverick-17B-128E-Instruct \
   --speculative-algorithm EAGLE3 \
@@ -72,7 +72,7 @@ Benchmark results on MMLU Pro dataset with 8*H100:
 
 Commands:
 
-```bash
+```bash Command
 # Llama-4-Scout-17B-16E-Instruct model
 python -m sglang.launch_server \
   --model-path meta-llama/Llama-4-Scout-17B-16E-Instruct \

@@ -40,7 +40,7 @@ FP4 quantization is currently experimental.
 
 To enable quantized KV cache, use the `--kv-cache-dtype` argument when launching the server:
 
-```bash
+```bash Command
 # Enable FP8 E5M2 KV cache
 python3 -m sglang.launch_server \
     --model-path deepseek-ai/DeepSeek-R1-0528 \
@@ -72,7 +72,7 @@ Scaling factors can be:
 
 The JSON file should follow this format:
 
-```json
+```json Config
 {
   "kv_cache": {
     "dtype": "float8_e4m3fn",

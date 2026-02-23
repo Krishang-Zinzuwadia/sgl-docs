@@ -57,7 +57,7 @@ For more API usage and request examples, please refer to:
 
 #### 4.1.1 Launch a server and then send requests
 
-```
+```text Output
 sglang serve --model-path Wan-AI/Wan2.2-T2V-A14B-Diffusers --port 3000
 
 curl http://127.0.0.1:3000/v1/images/generations \
@@ -75,7 +75,7 @@ curl http://127.0.0.1:3000/v1/images/generations \
 
 #### 4.1.2 Generate a video without launching a server
 
-```
+```text Output
 SERVER_ARGS=(
   --model-path Wan-AI/Wan2.2-T2V-A14B-Diffusers
   --text-encoder-cpu-offload
@@ -104,7 +104,7 @@ SGLang integrates [Cache-DiT](https://github.com/vipshop/cache-dit), a caching a
 
 **Basic Usage**
 
-```
+```text Output
 SGLANG_CACHE_DIT_ENABLED=true sglang serve --model-path Wan-AI/Wan2.2-T2V-A14B-Diffusers
 ```
 
@@ -129,7 +129,7 @@ SGLANG_CACHE_DIT_ENABLED=true sglang serve --model-path Wan-AI/Wan2.2-T2V-A14B-D
 
   Combined Configuration Example:
 
-```
+```text Output
 SGLANG_CACHE_DIT_ENABLED=true \
 SGLANG_CACHE_DIT_FN=2 \
 SGLANG_CACHE_DIT_BN=1 \
@@ -155,7 +155,7 @@ sglang serve --model-path Wan-AI/Wan2.2-T2V-A14B-Diffusers
 | [Wan-AI/Wan2.2-I2V-A14B-Diffusers](https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B-Diffusers) | [lightx2v/Wan2.2-Distill-Loras](https://huggingface.co/lightx2v/Wan2.2-Distill-Loras) |
 | [Wan-AI/Wan2.2-T2V-A14B-Diffusers](https://huggingface.co/Wan-AI/Wan2.2-T2V-A14B-Diffusers) | [Cseti/wan2.2-14B-Arcane_Jinx-lora-v1](https://huggingface.co/Cseti/wan2.2-14B-Arcane_Jinx-lora-v1) |
 **Example**:
-```
+```text Output
 sglang serve --model-path Wan-AI/Wan2.2-T2V-A14B-Diffusers --port 3000 \
     --lora-path Cseti/wan2.2-14B-Arcane_Jinx-lora-v1
 ```
@@ -175,20 +175,20 @@ Test Environment:
 
 **Server Command**:
 
-```
+```text Output
 sglang serve --model-path Wan-AI/Wan2.2-T2V-A14B-Diffusers
 ```
 
 **Benchmark Command**:
 
-```
+```text Output
 python3 -m sglang.multimodal_gen.benchmarks.bench_serving \
     --backend sglang-video --dataset vbench --task t2v --num-prompts 1 --max-concurrency 1
 ```
 
 **Result**:
 
-```
+```text Output
 ================= Serving Benchmark Result =================
 Backend:                                 sglang-video
 Model:                                   Wan-AI/Wan2.2-T2V-A14B-Diffusers
@@ -216,7 +216,7 @@ Peak Memory Median (MB):                 62627.41
 
 **Server Command**:
 
-```
+```text Output
 SGLANG_CACHE_DIT_ENABLED=true \
 SGLANG_CACHE_DIT_FN=2 \
 SGLANG_CACHE_DIT_BN=1 \
@@ -230,14 +230,14 @@ sglang serve --model-path Wan-AI/Wan2.2-T2V-A14B-Diffusers
 
 **Benchmark Command**:
 
-```
+```text Output
 python3 -m sglang.multimodal_gen.benchmarks.bench_serving \
     --backend sglang-video --dataset vbench --task t2v --num-prompts 20 --max-concurrency 20
 ```
 
 **Result**:
 
-```
+```text Output
 ================= Serving Benchmark Result =================
 Backend:                                 sglang-video
 Model:                                   Wan-AI/Wan2.2-T2V-A14B-Diffusers

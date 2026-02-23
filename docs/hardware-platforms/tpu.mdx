@@ -101,12 +101,12 @@ The following models have been tested and optimized for TPU deployment:
 
 <Tabs>
   <Tab title="PyPI (Recommended)">
-    ```bash
+    ```bash Command
     pip install sglang-jax
     ```
   </Tab>
   <Tab title="From Source">
-    ```bash
+    ```bash Command
     git clone https://github.com/sgl-project/sglang-jax
     cd sglang-jax
     uv venv --python 3.12 && source .venv/bin/activate
@@ -129,7 +129,7 @@ The following models have been tested and optimized for TPU deployment:
         Create a SkyPilot YAML file: `sglang-jax.sky.yaml`
       </Step>
       <Step title="Launch your TPU cluster">
-        ```bash
+        ```bash Command
         # Standard deployment
         sky launch -c sglang-jax sglang-jax.sky.yaml --infra=gcp
 
@@ -147,7 +147,7 @@ The following models have been tested and optimized for TPU deployment:
 
 <Tabs>
   <Tab title="Basic: Qwen-7B">
-    ```bash
+    ```bash Command
     JAX_COMPILATION_CACHE_DIR=/tmp/jit_cache python3 -u -m sgl_jax.launch_server \
         --model-path Qwen/Qwen-7B-Chat \
         --trust-remote-code \
@@ -192,7 +192,7 @@ The following models have been tested and optimized for TPU deployment:
   <Tab title="High-Performance: Qwen3-8B">
     For production workloads with optimal throughput:
 
-    ```bash
+    ```bash Command
     python3 -u -m sgl_jax.launch_server \
         --model-path Qwen/Qwen3-8B \
         --trust-remote-code \
@@ -209,7 +209,7 @@ The following models have been tested and optimized for TPU deployment:
   <Tab title="Speculative Decoding (EAGLE3)">
     Speculative decoding can improve throughput by 20-40% for compatible models:
 
-    ```bash
+    ```bash Command
     python3 -u -m sgl_jax.launch_server \
         --model-path Qwen/Qwen3-32B \
         --trust-remote-code \
@@ -237,7 +237,7 @@ The following models have been tested and optimized for TPU deployment:
   <Tab title="Multi-Node Distributed">
     For large models requiring multiple TPU VMs:
 
-    ```bash
+    ```bash Command
     # Node 0 (coordinator)
     python3 -m sgl_jax.launch_server \
         --model-path MODEL_PATH \
@@ -267,7 +267,7 @@ The following models have been tested and optimized for TPU deployment:
   <Tab title="Throughput Testing">
     Basic throughput benchmark:
 
-    ```bash
+    ```bash Command
     python3 -m sgl_jax.bench_serving \
         --backend sgl-jax \
         --dataset-name random \
@@ -282,7 +282,7 @@ The following models have been tested and optimized for TPU deployment:
   <Tab title="Latency Testing">
     Measure single-batch latency:
 
-    ```bash
+    ```bash Command
     python3 -m sgl_jax.bench_one_batch_server \
         --base-url http://127.0.0.1:30000 \
         --model-path Qwen/Qwen-7B-Chat \
@@ -294,7 +294,7 @@ The following models have been tested and optimized for TPU deployment:
   <Tab title="Comprehensive Benchmark Script">
     For systematic performance evaluation across different configurations:
 
-    ```bash
+    ```bash Command
     #!/bin/bash
     set -e
 
@@ -328,7 +328,7 @@ The following models have been tested and optimized for TPU deployment:
 
     For detailed help on all benchmark parameters:
 
-    ```bash
+    ```bash Command
     python3 -m sgl_jax.bench_serving --help
     ```
 
@@ -371,7 +371,7 @@ The following models have been tested and optimized for TPU deployment:
   <Accordion title="TPU-Specific Optimizations" icon="microchip">
     **JIT Compilation Cache:**
 
-    ```bash
+    ```bash Command
     export JAX_COMPILATION_CACHE_DIR=/tmp/jit_cache
     ```
 
@@ -447,7 +447,7 @@ The following models have been tested and optimized for TPU deployment:
   <Accordion title="Chunked Prefill" icon="layer-group">
     Enable mixed prefill-decode batching for better TPU utilization:
 
-    ```bash
+    ```bash Command
     --chunked-prefill-size=2048 --enable-mixed-chunk
     ```
 
@@ -461,7 +461,7 @@ The following models have been tested and optimized for TPU deployment:
   <Accordion title="Environment Verification" icon="circle-check">
     Verify your TPU setup before deploying:
 
-    ```bash
+    ```bash Command
     python -c "from sgl_jax import check_env; check_env.check_env()"
     ```
 

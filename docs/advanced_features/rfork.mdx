@@ -21,12 +21,12 @@ To learn more details about R-Fork, please check **[R-Fork blog](https://lmsys.o
 ### NCCL as backend
 
 seed instance:
-```shell
+```shell Command
 python -m sglang.launch_server [args]
 ```
 
 client instance:
-```shell
+```shell Command
 python -m sglang.launch_server [args] \
   --load-format remote_instance \
   --remote-instance-weight-loader-seed-instance-ip [seed_instance_ip] \
@@ -38,12 +38,12 @@ python -m sglang.launch_server [args] \
 ### TransferEngine as backend
 
 seed instance:
-```shell
+```shell Command
 python -m sglang.launch_server [args] \
   --remote-instance-weight-loader-start-seed-via-transfer-engine
 ```
 
-```shell
+```shell Command
 python -m sglang.launch_server [args] \
   --load-format remote_instance \
   --remote-instance-weight-loader-seed-instance-ip [seed_instance_ip] \

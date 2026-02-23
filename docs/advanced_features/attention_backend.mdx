@@ -84,7 +84,7 @@ Hybrid attention is an experimental feature.
 
 You can mix-and-match attention backends for prefill and decode. This is useful when one backend excels at prefill and another excels at decode. For the implementation details, please see `python/sglang/srt/layers/attention/hybrid_attn_backend.py`.
 
-```bash
+```bash Command
 # Example: Prefill with FA4, Decode with TRTLLM MLA (Blackwell)
 python3 -m sglang.launch_server \
   --model-path nvidia/DeepSeek-R1-FP4 \
@@ -136,7 +136,7 @@ If the `--attention-backend` argument is not specified, SGLang automatically sel
 ### Launch Command for Different Attention Backends
 
 - FlashInfer (Default for Non-Hopper Machines, e.g., A100, A40)
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --attention-backend flashinfer
@@ -148,7 +148,7 @@ python3 -m sglang.launch_server \
 ```
 
 - FlashAttention 3 (Default for Hopper Machines, e.g., H100, H200, H20)
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --attention-backend fa3
@@ -160,7 +160,7 @@ python3 -m sglang.launch_server \
 ```
 
 - Triton
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --attention-backend triton
@@ -172,7 +172,7 @@ python3 -m sglang.launch_server \
 ```
 
 - FlashMLA
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --tp 8 \
   --model deepseek-ai/DeepSeek-R1 \
@@ -187,7 +187,7 @@ python3 -m sglang.launch_server \
 ```
 
 - TRTLLM MLA (Optimized for Blackwell Architecture, e.g., B200)
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --tp 8 \
   --model deepseek-ai/DeepSeek-R1 \
@@ -196,7 +196,7 @@ python3 -m sglang.launch_server \
 ```
 
 - TRTLLM MLA with FP8 KV Cache (Higher concurrency, lower memory footprint)
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --tp 8 \
   --model deepseek-ai/DeepSeek-R1 \
@@ -206,7 +206,7 @@ python3 -m sglang.launch_server \
 ```
 
 - FlashAttention 4 (MHA & MLA)
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --tp 8 \
   --model deepseek-ai/DeepSeek-R1 \
@@ -215,7 +215,7 @@ python3 -m sglang.launch_server \
 ```
 
 - Cutlass MLA
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --tp 8 \
   --model deepseek-ai/DeepSeek-R1 \
@@ -224,42 +224,42 @@ python3 -m sglang.launch_server \
 ```
 
 - Ascend
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --attention-backend ascend
 ```
 
 - Intel XPU
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --attention-backend intel_xpu
 ```
 
 - Wave
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --attention-backend wave
 ```
 
 - FlexAttention
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --attention-backend flex_attention
 ```
 
 - Dual Chunk FlashAttention
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model Qwen/Qwen2.5-14B-Instruct-1M \
   --attention-backend dual_chunk_flash_attn
 ```
 
 - Torch Native
-```bash
+```bash Command
 python3 -m sglang.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --attention-backend torch_native

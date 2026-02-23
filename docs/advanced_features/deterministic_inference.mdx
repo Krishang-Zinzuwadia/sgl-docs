@@ -39,7 +39,7 @@ The following table shows feature compatibility for deterministic inference acro
 
 Enable deterministic inference by adding the `--enable-deterministic-inference` flag:
 
-```bash
+```bash Command
 python3 -m sglang.launch_server \
     --model-path Qwen/Qwen3-8B \
     --attention-backend fa3 \
@@ -56,7 +56,7 @@ python3 -m sglang.launch_server \
 ### Example Configurations
 
 #### Qwen3-8B
-```bash
+```bash Command
 python3 -m sglang.launch_server \
     --model-path Qwen/Qwen3-8B \
     --attention-backend flashinfer \
@@ -64,7 +64,7 @@ python3 -m sglang.launch_server \
 ```
 
 #### Llama Models
-```bash
+```bash Command
 python3 -m sglang.launch_server \
     --model-path meta-llama/Llama-3.1-8B-Instruct \
     --attention-backend fa3 \
@@ -72,7 +72,7 @@ python3 -m sglang.launch_server \
 ```
 
 #### Qwen3-30B-A3B (MoE Model)
-```bash
+```bash Command
 python3 -m sglang.launch_server \
     --model-path Qwen/Qwen3-30B-A3B \
     --attention-backend fa3 \
@@ -87,7 +87,7 @@ SGLang supports deterministic inference even with non-greedy sampling by using s
 
 By default, SGLang uses a sampling seed of `42` for reproducible sampling:
 
-```python
+```python Example
 import requests
 
 response = requests.post(
@@ -108,7 +108,7 @@ print(response.json())
 
 To sample different responses from the same prompt while maintaining reproducibility (e.g., for GRPO training), provide different sampling seeds in your requests:
 
-```python
+```python Example
 import requests
 
 # Prepare a list of sampling seeds for different responses
@@ -143,7 +143,7 @@ This approach ensures that:
 
 Run deterministic tests to verify consistent outputs:
 
-```bash
+```bash Command
 # Single test: same prompt, varying batch sizes
 python3 -m sglang.test.test_deterministic --test-mode single --n-trials 50
 

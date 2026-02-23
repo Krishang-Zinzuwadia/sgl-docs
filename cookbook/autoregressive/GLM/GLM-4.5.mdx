@@ -60,7 +60,7 @@ For basic API usage and request examples, please refer to:
 
 GLM-4.5 supports Thinking mode by default. Enable the reasoning parser during deployment to separate the thinking and the content sections:
 
-```shell
+```shell Command
 python -m sglang.launch_server \
   --model zai-org/GLM-4.5 \
   --reasoning-parser glm45 \
@@ -71,7 +71,7 @@ python -m sglang.launch_server \
 
 **Streaming with Thinking Process:**
 
-```python
+```python Example
 from openai import OpenAI
 
 client = OpenAI(
@@ -120,7 +120,7 @@ print()
 
 **Output Example:**
 
-```
+```text Output
 =============== Thinking =================
 To solve this problem, I need to calculate 15% of 240.
 Step 1: Convert 15% to decimal: 15% = 0.15
@@ -137,7 +137,7 @@ The answer is 36. To find 15% of 240, we multiply 240 by 0.15, which equals 36.
 
 GLM-4.5 supports tool calling capabilities. Enable the tool call parser:
 
-```shell
+```shell Command
 python -m sglang.launch_server \
   --model zai-org/GLM-4.5 \
   --reasoning-parser glm45 \
@@ -149,7 +149,7 @@ python -m sglang.launch_server \
 
 **Python Example (with Thinking Process):**
 
-```python
+```python Example
 from openai import OpenAI
 
 client = OpenAI(
@@ -231,7 +231,7 @@ print()
 
 **Output Example:**
 
-```
+```text Output
 =============== Thinking =================
 The user is asking about the weather in Beijing. I need to use the get_weather function to retrieve this information.
 I should call the function with location="Beijing".
@@ -291,7 +291,7 @@ For each concurrency level, configure `num_prompts` to simulate realistic user l
 **Scenario 1: Chat (1K/1K) - Most Important**
 
 - **Model Deployment**
-```bash
+```bash Command
 python -m sglang.launch_server \
   --model zai-org/GLM-4.5 \
   --tp 8
@@ -300,7 +300,7 @@ python -m sglang.launch_server \
 
 - Low Concurrency (Latency-Optimized)
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -313,7 +313,7 @@ python -m sglang.bench_serving \
 ```
 
 - Medium Concurrency (Balanced)
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -326,7 +326,7 @@ python -m sglang.bench_serving \
 ```
 
 - High Concurrency (Throughput-Optimized)
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -342,7 +342,7 @@ python -m sglang.bench_serving \
 
 - Low Concurrency
 
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -355,7 +355,7 @@ python -m sglang.bench_serving \
 ```
 
 - Medium Concurrency
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -368,7 +368,7 @@ python -m sglang.bench_serving \
 ```
 
 - High Concurrency
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -383,7 +383,7 @@ python -m sglang.bench_serving \
 **Scenario 3: Summarization (8K/1K)**
 
 - Low Concurrency
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -396,7 +396,7 @@ python -m sglang.bench_serving \
 ```
 
 - Medium Concurrency
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -409,7 +409,7 @@ python -m sglang.bench_serving \
 ```
 
 - High Concurrency
-```bash
+```bash Command
 python -m sglang.bench_serving \
   --backend sglang \
   --model zai-org/GLM-4.5 \
@@ -452,7 +452,7 @@ Document model accuracy on standard benchmarks:
 #### 5.2.1 GSM8K Benchmark
 
 - Benchmark Command
-```bash
+```bash Command
 python -m sglang.test.few_shot_gsm8k \
   --num-questions 200 \
   --port 30000

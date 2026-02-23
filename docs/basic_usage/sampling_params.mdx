@@ -38,7 +38,7 @@ The object is defined at `sampling_params.py::SamplingParams`. You can also read
 
 By default, SGLang initializes several sampling parameters from the model's `generation_config.json` (when the server is launched with `--sampling-defaults model`, which is the default). To use SGLang/OpenAI constant defaults instead, start the server with `--sampling-defaults openai`. You can always override any parameter per request via `sampling_params`.
 
-```bash
+```bash Command
 # Use model-provided defaults from generation_config.json (default behavior)
 python -m sglang.launch_server --model-path <MODEL> --sampling-defaults model
 
@@ -96,13 +96,13 @@ Please refer to our dedicated guide on [constrained decoding](../advanced_featur
 
 Launch a server:
 
-```bash
+```bash Command
 python -m sglang.launch_server --model-path meta-llama/Meta-Llama-3-8B-Instruct --port 30000
 ```
 
 Send a request:
 
-```python
+```python Example
 import requests
 
 response = requests.post(
@@ -124,7 +124,7 @@ Detailed example in [send request](./send_request).
 
 Send a request and stream the output:
 
-```python
+```python Example
 import requests, json
 
 response = requests.post(
@@ -159,19 +159,19 @@ Detailed example in [openai compatible api](openai_api_completions).
 
 Launch a server:
 
-```bash
+```bash Command
 python3 -m sglang.launch_server --model-path lmms-lab/llava-onevision-qwen2-7b-ov
 ```
 
 Download an image:
 
-```bash
+```bash Command
 curl -o example_image.png -L https://github.com/sgl-project/sglang/blob/main/examples/assets/example_image.png?raw=true
 ```
 
 Send a request:
 
-```python
+```python Example
 import requests
 
 response = requests.post(
@@ -208,12 +208,12 @@ SGLang supports two grammar backends:
 
 If instead you want to initialize the Outlines backend, you can use `--grammar-backend outlines` flag:
 
-```bash
+```bash Command
 python -m sglang.launch_server --model-path meta-llama/Meta-Llama-3.1-8B-Instruct \
 --port 30000 --host 0.0.0.0 --grammar-backend [xgrammar|outlines] # xgrammar or outlines (default: xgrammar)
 ```
 
-```python
+```python Example
 import json
 import requests
 
@@ -275,7 +275,7 @@ Detailed example in [structured outputs](../advanced_features/structured_outputs
 
 Launch a server with `--enable-custom-logit-processor` flag on.
 
-```bash
+```bash Command
 python -m sglang.launch_server \
   --model-path meta-llama/Meta-Llama-3-8B-Instruct \
   --port 30000 \
@@ -284,7 +284,7 @@ python -m sglang.launch_server \
 
 Define a custom logit processor that will always sample a specific token id.
 
-```python
+```python Example
 from sglang.srt.sampling.custom_logit_processor import CustomLogitProcessor
 
 class DeterministicLogitProcessor(CustomLogitProcessor):
@@ -307,7 +307,7 @@ class DeterministicLogitProcessor(CustomLogitProcessor):
 
 Send a request:
 
-```python
+```python Example
 import requests
 
 response = requests.post(
@@ -327,7 +327,7 @@ print(response.json())
 
 Send an OpenAI chat completion request:
 
-```python
+```python Example
 import openai
 from sglang.utils import print_highlight
 

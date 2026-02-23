@@ -65,7 +65,7 @@ For complete API documentation, please refer to the [official API usage guide](h
 
 ### 4.1 Generate an Image
 
-```python
+```python Example
 import base64
 from openai import OpenAI
 
@@ -93,7 +93,7 @@ SGLang integrates [Cache-DiT](https://github.com/vipshop/cache-dit), a caching a
 
 **Basic Usage**
 
-```bash
+```bash Command
 SGLANG_CACHE_DIT_ENABLED=true sglang serve --model-path black-forest-labs/FLUX.1-dev
 ```
 
@@ -117,7 +117,7 @@ SGLANG_CACHE_DIT_ENABLED=true sglang serve --model-path black-forest-labs/FLUX.1
 
   Combined Configuration Example:
 
-```bash
+```bash Command
 SGLANG_CACHE_DIT_ENABLED=true \
 SGLANG_CACHE_DIT_FN=2 \
 SGLANG_CACHE_DIT_BN=1 \
@@ -150,20 +150,20 @@ Test Environment:
 
 **Server Command**:
 
-```
+```text Output
 sglang serve --model-path black-forest-labs/FLUX.1-dev --port 30000
 ```
 
 **Benchmark Command**:
 
-```
+```text Output
 python3 -m sglang.multimodal_gen.benchmarks.bench_serving \
     --backend sglang-video --dataset vbench --task t2v --num-prompts 1 --max-concurrency 1
 ```
 
 **Result**:
 
-```
+```text Output
 ================= Serving Benchmark Result =================
 Backend:                                 sglang-image
 Model:                                   black-forest-labs/FLUX.1-dev
@@ -190,20 +190,20 @@ Peak Memory Median (MB):                 27905.19
 
 **Server Command** :
 
-```
+```text Output
 sglang serve --model-path black-forest-labs/FLUX.1-dev --port 30000
 ```
 
 **Benchmark Command** :
 
-```
+```text Output
 python3 -m sglang.multimodal_gen.benchmarks.bench_serving \
     --backend sglang-image --dataset vbench --task t2v --num-prompts 20 --max-concurrency 20
 ```
 
 **Result** :
 
-```
+```text Output
 ================= Serving Benchmark Result =================
 Backend:                                 sglang-image
 Model:                                   black-forest-labs/FLUX.1-dev

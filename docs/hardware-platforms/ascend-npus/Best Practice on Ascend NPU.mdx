@@ -73,7 +73,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -155,7 +155,7 @@ done
 
 ```
 
-```shell
+```shell Command
 export SGLANG_DP_ROUND_ROBIN=1
 python -m sglang_router.launch_router \
     --pd-disaggregation \
@@ -172,7 +172,7 @@ python -m sglang_router.launch_router \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6688 --max-concurrency 768  --random-input-len 3500 --random-output-len 1500 --num-prompts 3072 --random-range-ratio 1 --request-rate 16
 ```
 
@@ -192,7 +192,7 @@ TPOT: 20ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -272,7 +272,7 @@ done
 
 ```
 
-```shell
+```shell Command
 export SGLANG_DP_ROUND_ROBIN=1
 python -m sglang_router.launch_router \
     --pd-disaggregation \
@@ -289,7 +289,7 @@ python -m sglang_router.launch_router \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6688 --max-concurrency 32  --random-input-len 6000 --random-output-len 1600 --num-prompts 32 --random-range-ratio 1
 ```
 
@@ -315,7 +315,7 @@ Please Turn to [DeepSeek-R1 6K-1_6K 20ms on A3 32 Cards Separation Mode](#deepse
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6688 --max-concurrency 768  --random-input-len 3900 --random-output-len 1000 --num-prompts 768 --random-range-ratio 1 --request-rate 16
 ```
 
@@ -341,7 +341,7 @@ Please Turn to [DeepSeek-R1 6K-1_6K 20ms on A3 32 Cards Separation Mode](#deepse
 
 We tested it based on the `RANDOM` dataset.
 
-```bash
+```bash Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6688 --max-concurrency 768  --random-input-len 3500 --random-output-len 1500 --num-prompts 768 --random-range-ratio 1 --request-rate 16
 ```
 
@@ -367,7 +367,7 @@ Please Turn to [DeepSeek-R1 6K-1_6K 20ms on A3 32 Cards Separation Mode](#deepse
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6688 --max-concurrency 768  --random-input-len 3500 --random-output-len 1000 --num-prompts 768 --random-range-ratio 1 --request-rate 16
 ```
 
@@ -387,7 +387,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -447,7 +447,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6699 --max-concurrency 256  --random-input-len 2048 --random-output-len 2048 --num-prompts 1024 --random-range-ratio 1
 ```
 
@@ -467,7 +467,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -556,7 +556,7 @@ done
 
 ```
 
-```shell
+```shell Command
 export SGLANG_DP_ROUND_ROBIN=1
 python -m sglang_router.launch_router \
     --pd-disaggregation \
@@ -572,7 +572,7 @@ python -m sglang_router.launch_router \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6688 --max-concurrency 400  --random-input-len 2048 --random-output-len 2048 --num-prompts 3200 --random-range-ratio 1 --request-rate 8
 ```
 
@@ -592,7 +592,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -649,7 +649,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6699 --max-concurrency 144  --random-input-len 3500 --random-output-len 1500 --num-prompts 576 --random-range-ratio 1
 ```
 
@@ -669,7 +669,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -757,7 +757,7 @@ done
 
 ```
 
-```shell
+```shell Command
 export SGLANG_DP_ROUND_ROBIN=1
 python -m sglang_router.launch_router \
     --pd-disaggregation \
@@ -773,7 +773,7 @@ python -m sglang_router.launch_router \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6688 --max-concurrency 384  --random-input-len 3500 --random-output-len 1500 --num-prompts 1536 --random-range-ratio 1
 ```
 
@@ -795,7 +795,7 @@ TPOT: 30ms
 
 Deploy Prefill Instance
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -878,7 +878,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 
 Deploy Decode Instance
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -968,7 +968,7 @@ python3 -m sglang.launch_server --model-path ${MODEL_PATH} \
 --dist-init-addr ${IPs[0]}:10000 --load-balance-method decode_round_robin
 ```
 
-```shell
+```shell Command
 export SGLANG_DP_ROUND_ROBIN=1
 python -m sglang_router.launch_router \
     --pd-disaggregation \
@@ -984,7 +984,7 @@ python -m sglang_router.launch_router \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6688 --max-concurrency 32  --random-input-len 64000 --random-output-len 3000 --num-prompts 64 --random-range-ratio 1
 ```
 
@@ -1004,7 +1004,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1104,7 +1104,7 @@ done
 
 ```
 
-```shell
+```shell Command
 export SGLANG_DP_ROUND_ROBIN=1
 python -m sglang_router.launch_router \
     --pd-disaggregation \
@@ -1120,7 +1120,7 @@ python -m sglang_router.launch_router \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang-oai --host 127.0.0.1 --port 7239 --max-concurrency 860 --random-input-len 3500 --random-output-len 1500 --num-prompts 3440 --random-range-ratio 1
 ```
 
@@ -1140,7 +1140,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1193,7 +1193,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 272 --random-input-len 3500 --random-output-len 1500 --num-prompts 1088 --random-range-ratio 1
 ```
 
@@ -1213,7 +1213,7 @@ TPOT: 100ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1265,7 +1265,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 576 --random-input-len 2000 --random-output-len 2000 --num-prompts 576 --random-range-ratio 1
 ```
 
@@ -1285,7 +1285,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1337,7 +1337,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 480 --random-input-len 2048 --random-output-len 2048 --num-prompts 480 --random-range-ratio 1
 ```
 
@@ -1357,7 +1357,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1422,7 +1422,7 @@ done
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 768 --random-input-len 2000 --random-output-len 2000 --num-prompts 768 --random-range-ratio 1
 ```
 
@@ -1442,7 +1442,7 @@ TPOT: 10ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1495,7 +1495,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 1 --random-input-len 11000 --random-output-len 1000 --num-prompts 1 --random-range-ratio 1
 ```
 
@@ -1515,7 +1515,7 @@ TPOT: 18ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1566,7 +1566,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 32 --random-output-len 1500 --random-input-len 6000 --num-prompts 32 --random-range-ratio 1
 ```
 
@@ -1586,7 +1586,7 @@ TPOT: 11ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1636,7 +1636,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7239 --random-range-ratio 1 --max-concurrency 1 --random-output-len 1500 --random-input-len 4096 --num-prompts 4
 ```
 
@@ -1656,7 +1656,7 @@ TPOT: 12ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1705,7 +1705,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7339 --random-range-ratio 1 --max-concurrency 1 --random-output-len 18000 --random-input-len 4000 --num-prompts 1
 ```
 
@@ -1725,7 +1725,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1775,7 +1775,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7239 --max-concurrency 78 --random-output-len 1500 --random-input-len 3500 --num-prompts 312 --random-range-ratio 1
 ```
 
@@ -1795,7 +1795,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1845,7 +1845,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7239 --max-concurrency 120 --random-output-len 2000 --random-input-len 2000 --num-prompts 480 --random-range-ratio 1
 ```
 
@@ -1865,7 +1865,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -1915,7 +1915,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7239 --max-concurrency 156 --random-input-len 3500 --random-output-len 1500 --num-prompts 624 --random-range-ratio 1
 ```
 
@@ -1935,7 +1935,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -2023,7 +2023,7 @@ done
 
 ```
 
-```shell
+```shell Command
 export SGLANG_DP_ROUND_ROBIN=1
 python -m sglang_router.launch_router \
     --pd-disaggregation \
@@ -2039,7 +2039,7 @@ python -m sglang_router.launch_router \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7239 --max-concurrency 410 --random-input-len 3500 --random-output-len 1500 --num-prompts 1640 --random-range-ratio 1 --request-rate 8
 ```
 
@@ -2059,7 +2059,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -2122,7 +2122,7 @@ done
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 288 --random-input-len 3500 --random-output-len 1500 --num-prompts 1152 --random-range-ratio 1 --request-rate 20
 ```
 
@@ -2142,7 +2142,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -2190,7 +2190,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 80 --random-input-len 3500 --random-output-len 1500 --num-prompts 320 --random-range-ratio 1
 ```
 
@@ -2210,7 +2210,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 export cann_path=/usr/local/Ascend/ascend-toolkit/latest
 source /usr/local/Ascend/driver/bin/setenv.bash
 source ${cann_path}/../set_env.sh
@@ -2259,7 +2259,7 @@ python -m sglang.launch_server \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 6699 --max-concurrency 80 --random-output-len 1536 --random-input-len 3584 --num-prompts 160 --random-range-ratio 1
 ```
 
@@ -2279,7 +2279,7 @@ TPOT: 18ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -2328,7 +2328,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 32 --random-output-len 1500 --random-input-len 6000 --num-prompts 32 --random-range-ratio 1
 ```
 
@@ -2348,7 +2348,7 @@ TPOT: 11ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -2401,7 +2401,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving  --dataset-name random --backend sglang --host 127.0.0.1 --port 7339 --random-range-ratio 1 --max-concurrency 1 --random-output-len 1500 --random-input-len 4096 --num-prompts 4
 ```
 
@@ -2421,7 +2421,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -2471,7 +2471,7 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7239 --max-concurrency 78 --random-output-len 1500 --random-input-len 3500 --num-prompts 312 --random-range-ratio 1
 ```
 
@@ -2491,7 +2491,7 @@ TPOT: 50ms
 
 #### Model Deployment
 
-```shell
+```shell Command
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -2540,6 +2540,6 @@ python -m sglang.launch_server --model-path $MODEL_PATH \
 
 We tested it based on the `RANDOM` dataset.
 
-```shell
+```shell Command
 python3 -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7239 --max-concurrency 120 --random-output-len 2000 --random-input-len 2000 --num-prompts 120 --random-range-ratio 1
 ```

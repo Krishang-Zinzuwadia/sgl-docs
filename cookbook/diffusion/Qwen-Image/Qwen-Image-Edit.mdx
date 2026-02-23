@@ -56,7 +56,7 @@ For complete API documentation, please refer to the [official API usage guide](h
 
 ### 4.1 Edit an Image
 
-```python
+```python Example
 import base64
 from openai import OpenAI
 
@@ -84,7 +84,7 @@ SGLang integrates [Cache-DiT](https://github.com/vipshop/cache-dit), a caching a
 
 **Basic Usage**
 
-```bash
+```bash Command
 SGLANG_CACHE_DIT_ENABLED=true sglang serve --model-path Qwen/Qwen-Image-Edit-2511
 ```
 
@@ -108,7 +108,7 @@ SGLANG_CACHE_DIT_ENABLED=true sglang serve --model-path Qwen/Qwen-Image-Edit-251
 
   Combined Configuration Example:
 
-```bash
+```bash Command
 SGLANG_CACHE_DIT_ENABLED=true \
 SGLANG_CACHE_DIT_FN=2 \
 SGLANG_CACHE_DIT_BN=1 \
@@ -142,20 +142,20 @@ Test Environment:
 
 **Server Command**:
 
-```
+```text Output
 sglang serve --model-path Qwen/Qwen-Image-Edit-2511 --port 30000
 ```
 
 **Benchmark Command**:
 
-```
+```text Output
 python3 -m sglang.multimodal_gen.benchmarks.bench_serving \
     --backend sglang-image --dataset vbench --task ti2i --num-prompts 1 --max-concurrency 1
 ```
 
 **Result**:
 
-```
+```text Output
 ================= Serving Benchmark Result =================
 Backend:                                 sglang-image
 Model:                                   Qwen/Qwen-Image-Edit-2511
@@ -182,14 +182,14 @@ Peak Memory Median (MB):                 47959.35
 
 **Benchmark Command**:
 
-```
+```text Output
 python3 -m sglang.multimodal_gen.benchmarks.bench_serving \
     --backend sglang-image --dataset vbench --task ti2i --num-prompts 20 --max-concurrency 20
 ```
 
 **Result**:
 
-```
+```text Output
 ================= Serving Benchmark Result =================
 Backend:                                 sglang-image
 Model:                                   Qwen/Qwen-Image-Edit-2511

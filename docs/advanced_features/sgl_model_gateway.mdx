@@ -101,14 +101,14 @@ SGLang Model Gateway is a high-performance model-routing gateway for large-scale
 
 Pre-built Docker images are available on Docker Hub with multi-architecture support (x86_64 and ARM64):
 
-```bash
+```bash Command
 docker pull lmsysorg/sgl-model-gateway:latest
 ```
 
 ### Prerequisites
 
 - **Rust and Cargo**
-  ```bash
+  ```bash Command
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   source "$HOME/.cargo/env"
   rustc --version
@@ -118,14 +118,14 @@ docker pull lmsysorg/sgl-model-gateway:latest
 
 ### Rust Binary
 
-```bash
+```bash Command
 cd sgl-model-gateway
 cargo build --release
 ```
 
 ### Python Package
 
-```bash
+```bash Command
 pip install maturin
 
 # Fast development mode
@@ -142,7 +142,7 @@ pip install --force-reinstall dist/*.whl
 
 ### Regular HTTP Routing
 
-```bash
+```bash Command
 # Rust binary
 ./target/release/sgl-model-gateway \
   --worker-urls http://worker1:8000 http://worker2:8000 \
@@ -156,7 +156,7 @@ python -m sglang_router.launch_router \
 
 ### gRPC Routing
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls grpc://127.0.0.1:20000 \
   --model-path meta-llama/Llama-3.1-8B-Instruct \
@@ -172,7 +172,7 @@ python -m sglang_router.launch_router \
 
 Launch the router and a fleet of SGLang workers in one process:
 
-```bash
+```bash Command
 python -m sglang_router.launch_server \
   --model meta-llama/Meta-Llama-3.1-8B-Instruct \
   --dp-size 4 \
@@ -182,7 +182,7 @@ python -m sglang_router.launch_server \
 
 Comprehensive example with router arguments (prefixed with `--router-`):
 
-```bash
+```bash Command
 python -m sglang_router.launch_server \
   --host 0.0.0.0 \
   --port 8080 \
@@ -202,7 +202,7 @@ python -m sglang_router.launch_server \
 
 Run workers independently and point the router at their HTTP endpoints:
 
-```bash
+```bash Command
 # Worker nodes
 python -m sglang.launch_server --model meta-llama/Meta-Llama-3.1-8B-Instruct --port 8000
 python -m sglang.launch_server --model meta-llama/Meta-Llama-3.1-8B-Instruct --port 8001
@@ -218,7 +218,7 @@ python -m sglang_router.launch_router \
 
 Use SRT gRPC workers to unlock the highest throughput and access native reasoning/tool pipelines:
 
-```bash
+```bash Command
 # Workers expose gRPC endpoints
 python -m sglang.launch_server \
   --model meta-llama/Llama-3.1-8B-Instruct \
@@ -240,7 +240,7 @@ The gRPC router supports both regular HTTP-equivalent serving and PD (prefill/de
 
 Split prefill and decode workers for PD-aware caching and balancing:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --pd-disaggregation \
   --prefill http://prefill1:30001 9001 \
@@ -255,7 +255,7 @@ Prefill entries accept an optional bootstrap port. PD mode merges prefill metada
 
 Proxy OpenAI-compatible endpoints while keeping history and MCP sessions local:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --backend openai \
   --worker-urls https://api.openai.com \
@@ -268,7 +268,7 @@ OpenAI backend mode expects exactly one `--worker-urls` entry per router instanc
 
 Enable IGW mode to route multiple models through a single router:
 
-```bash
+```bash Command
 ./target/release/sgl-model-gateway \
   --enable-igw \
   --policy cache_aware \
@@ -315,7 +315,7 @@ The gateway provides HTTP endpoints for text tokenization with batch support, de
 
 #### Tokenize Request
 
-```json
+```json Config
 {
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "prompt": "Hello, world!"
@@ -324,7 +324,7 @@ The gateway provides HTTP endpoints for text tokenization with batch support, de
 
 #### Batch Tokenize Request
 
-```json
+```json Config
 {
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "prompt": ["Hello", "World", "How are you?"]
@@ -333,7 +333,7 @@ The gateway provides HTTP endpoints for text tokenization with batch support, de
 
 #### Tokenize Response
 
-```json
+```json Config
 {
   "tokens": [15339, 11, 1917, 0],
   "count": 4,
@@ -343,7 +343,7 @@ The gateway provides HTTP endpoints for text tokenization with batch support, de
 
 #### Detokenize Request
 
-```json
+```json Config
 {
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "tokens": [15339, 11, 1917, 0],
@@ -353,7 +353,7 @@ The gateway provides HTTP endpoints for text tokenization with batch support, de
 
 #### Detokenize Response
 
-```json
+```json Config
 {
   "text": "Hello, world!"
 }
@@ -361,14 +361,14 @@ The gateway provides HTTP endpoints for text tokenization with batch support, de
 
 #### Add Tokenizer (Async)
 
-```bash
+```bash Command
 curl -X POST http://localhost:30000/v1/tokenizers \
   -H "Content-Type: application/json" \
   -d '{"name": "llama3", "source": "meta-llama/Llama-3.1-8B-Instruct"}'
 ```
 
 Response:
-```json
+```json Config
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
   "status": "pending",
@@ -377,7 +377,7 @@ Response:
 ```
 
 Check status:
-```bash
+```bash Command
 curl http://localhost:30000/v1/tokenizers/550e8400-e29b-41d4-a716-446655440000/status
 ```
 
@@ -392,7 +392,7 @@ The gateway provides admin endpoints for parsing reasoning content and function 
 
 #### Separate Reasoning Request
 
-```json
+```json Config
 {
   "text": "&lt;think&gt;Let me analyze this step by step...&lt;/think&gt;The answer is 42.",
   "parser": "deepseek-r1"
@@ -401,7 +401,7 @@ The gateway provides admin endpoints for parsing reasoning content and function 
 
 #### Response
 
-```json
+```json Config
 {
   "normal_text": "The answer is 42.",
   "reasoning_text": "Let me analyze this step by step..."
@@ -410,7 +410,7 @@ The gateway provides admin endpoints for parsing reasoning content and function 
 
 #### Function Call Parsing
 
-```json
+```json Config
 {
   "text": "{\"name\": \"get_weather\", \"arguments\": {\"city\": \"NYC\"}}",
   "parser": "json"
@@ -423,7 +423,7 @@ The `/v1/classify` endpoint provides text classification using sequence classifi
 
 #### Request
 
-```bash
+```bash Command
 curl http://localhost:30000/v1/classify \
   -H "Content-Type: application/json" \
   -d '{
@@ -434,7 +434,7 @@ curl http://localhost:30000/v1/classify \
 
 #### Response
 
-```json
+```json Config
 {
   "id": "classify-a1b2c3d4-5678-90ab-cdef-1234567890ab",
   "object": "list",
@@ -500,7 +500,7 @@ curl http://localhost:30000/v1/classify \
 
 #### Add Worker
 
-```bash
+```bash Command
 curl -X POST http://localhost:30000/workers \
   -H "Content-Type: application/json" \
   -d '{"url":"grpc://0.0.0.0:31000","worker_type":"regular"}'
@@ -508,12 +508,12 @@ curl -X POST http://localhost:30000/workers \
 
 #### List Workers
 
-```bash
+```bash Command
 curl http://localhost:30000/workers
 ```
 
 Response:
-```json
+```json Config
 {
   "workers": [
     {
@@ -568,7 +568,7 @@ Response:
 
 ### Cache-Aware Policy Tuning
 
-```bash
+```bash Command
 --cache-threshold 0.5 \
 --balance-abs-threshold 32 \
 --balance-rel-threshold 1.5 \
@@ -591,7 +591,7 @@ Response:
 
 Configure exponential backoff retries:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls http://worker1:8000 http://worker2:8001 \
   --retry-max-retries 5 \
@@ -616,7 +616,7 @@ python -m sglang_router.launch_router \
 
 Per-worker circuit breakers prevent cascading failures:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls http://worker1:8000 http://worker2:8001 \
   --cb-failure-threshold 5 \
@@ -640,7 +640,7 @@ python -m sglang_router.launch_router \
 
 ### Rate Limiting and Queuing
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls http://worker1:8000 http://worker2:8001 \
   --max-concurrent-requests 256 \
@@ -655,7 +655,7 @@ Requests beyond the concurrency limit wait in a FIFO queue. Returns:
 
 ### Health Checks
 
-```bash
+```bash Command
 --health-check-interval-secs 30 \
 --health-check-timeout-secs 10 \
 --health-success-threshold 2 \
@@ -682,7 +682,7 @@ The gateway includes built-in reasoning parsers for models that use Chain-of-Tho
 
 ### Usage
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls grpc://127.0.0.1:20000 \
   --model-path deepseek-ai/DeepSeek-R1 \
@@ -710,7 +710,7 @@ The gateway supports parsing function/tool calls from LLM outputs in multiple fo
 
 ### Usage
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls grpc://127.0.0.1:20000 \
   --model-path meta-llama/Llama-3.1-8B-Instruct \
@@ -729,7 +729,7 @@ The gateway supports multiple tokenizer backends:
 
 ### Configuration
 
-```bash
+```bash Command
 # HuggingFace model
 --model-path meta-llama/Llama-3.1-8B-Instruct
 
@@ -749,7 +749,7 @@ Two-level caching for optimal performance:
 | L0 | Exact match | Whole-string caching for repeated prompts |
 | L1 | Prefix match | Prefix boundary matching for incremental prompts |
 
-```bash
+```bash Command
 --enable-l0-cache \
 --l0-max-entries 10000 \
 --enable-l1-cache \
@@ -771,7 +771,7 @@ The gateway provides native Model Context Protocol (MCP) client integration for 
 
 ### Configuration
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --mcp-config-path /path/to/mcp-config.yaml \
   --worker-urls http://worker1:8000
@@ -779,7 +779,7 @@ python -m sglang_router.launch_router \
 
 ### MCP Configuration File
 
-```yaml
+```yaml Config
 servers:
   - name: "filesystem"
     command: "npx"
@@ -818,7 +818,7 @@ inventory:
 
 Enable automatic worker discovery via Kubernetes pod selectors:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --service-discovery \
   --selector app=sglang-worker role=inference \
@@ -828,7 +828,7 @@ python -m sglang_router.launch_router \
 
 ### PD Mode Discovery
 
-```bash
+```bash Command
 --pd-disaggregation \
 --prefill-selector app=sglang component=prefill \
 --decode-selector app=sglang component=decode \
@@ -850,7 +850,7 @@ Prefill pods can expose bootstrap ports via the `sglang.ai/bootstrap-port` annot
 
 ### Oracle Configuration
 
-```bash
+```bash Command
 # Connection descriptor
 export ATP_DSN="(description=(address=(protocol=tcps)(port=1522)(host=adb.region.oraclecloud.com))(connect_data=(service_name=service_name)))"
 
@@ -872,7 +872,7 @@ python -m sglang_router.launch_router \
 
 ### PostgreSQL Configuration
 
-```bash
+```bash Command
 export POSTGRES_DB_URL="postgres://user:password@host:5432/dbname"
 
 python -m sglang_router.launch_router \
@@ -883,7 +883,7 @@ python -m sglang_router.launch_router \
 
 ### Redis Configuration
 
-```bash
+```bash Command
 export REDIS_URL="redis://localhost:6379"
 export REDIS_POOL_MAX=16
 export REDIS_RETENTION_DAYS=30
@@ -931,7 +931,7 @@ The interface definition is located at `src/wasm/interface`.
 
 ### Building Modules
 
-```bash
+```bash Command
 # Prerequisites
 rustup target add wasm32-wasip2
 cargo install wasm-tools
@@ -947,7 +947,7 @@ wasm-tools component new \
 
 ### Deploying Modules
 
-```bash
+```bash Command
 # Enable WASM support
 python -m sglang_router.launch_router \
   --worker-urls http://worker1:8000 \
@@ -994,7 +994,7 @@ The Python bindings provide a PyO3-based wrapper around the Rust gateway library
 
 #### Installation
 
-```bash
+```bash Command
 # From PyPI
 pip install sglang-router
 
@@ -1022,7 +1022,7 @@ The Go bindings provide a high-performance gRPC client library for organizations
 
 #### Architecture
 
-```text
+```text Output
 +-------------------------------------------+
 |           High-Level Go API               |
 |   (client.go - OpenAI-style interface)    |
@@ -1042,7 +1042,7 @@ The Go bindings provide a high-performance gRPC client library for organizations
 
 #### Installation
 
-```bash
+```bash Command
 # Build the FFI library first
 cd sgl-model-gateway/bindings/golang
 make build && make lib
@@ -1063,7 +1063,7 @@ Complete working examples are available in `bindings/golang/examples/`:
 | `streaming/` | Streaming chat completion with SSE |
 | `oai_server/` | Full OpenAI-compatible HTTP server |
 
-```bash
+```bash Command
 # Run examples
 cd sgl-model-gateway/bindings/golang/examples/simple && ./run.sh
 cd sgl-model-gateway/bindings/golang/examples/streaming && ./run.sh
@@ -1072,7 +1072,7 @@ cd sgl-model-gateway/bindings/golang/examples/oai_server && ./run.sh
 
 #### Testing
 
-```bash
+```bash Command
 cd sgl-model-gateway/bindings/golang
 
 # Unit tests
@@ -1102,7 +1102,7 @@ go test -tags=integration -v ./...
 
 ### Router API Key
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --api-key "your-router-api-key" \
   --worker-urls http://worker1:8000
@@ -1112,7 +1112,7 @@ Clients must supply `Authorization: Bearer <key>` for protected endpoints.
 
 ### Worker API Keys
 
-```bash
+```bash Command
 # Add worker with explicit key
 curl -H "Authorization: Bearer router-key" \
   -X POST http://localhost:8080/workers \
@@ -1131,7 +1131,7 @@ curl -H "Authorization: Bearer router-key" \
 
 Enable TLS to serve the gateway over HTTPS:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls http://worker1:8000 \
   --tls-cert-path /path/to/server.crt \
@@ -1149,7 +1149,7 @@ Both parameters must be provided together. The gateway uses rustls with the ring
 
 Enable mutual TLS (mTLS) for secure communication with workers in HTTP mode:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls https://worker1:8443 https://worker2:8443 \
   --client-cert-path /path/to/client.crt \
@@ -1174,7 +1174,7 @@ python -m sglang_router.launch_router \
 
 Gateway HTTPS + Worker mTLS + API Key authentication:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls https://worker1:8443 https://worker2:8443 \
   --tls-cert-path /etc/certs/server.crt \
@@ -1224,7 +1224,7 @@ Enable with `--prometheus-host`/`--prometheus-port` (defaults to `0.0.0.0:29000`
 
 Enable distributed tracing with OTLP export:
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls http://worker1:8000 \
   --enable-trace \
@@ -1242,7 +1242,7 @@ python -m sglang_router.launch_router \
 
 ### Logging
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls http://worker1:8000 \
   --log-level debug \
@@ -1253,7 +1253,7 @@ Structured tracing with optional file sink. Log levels: `debug`, `info`, `warn`,
 
 ### Request ID Propagation
 
-```bash
+```bash Command
 --request-id-headers x-request-id x-trace-id x-correlation-id
 ```
 
@@ -1268,7 +1268,7 @@ This section provides guidance for deploying SGLang Model Gateway in production 
 
 **Always enable TLS in production:**
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls https://worker1:8443 https://worker2:8443 \
   --tls-cert-path /etc/certs/server.crt \
@@ -1308,7 +1308,7 @@ The gateway supports running multiple replicas behind a load balancer for high a
    - Easier capacity planning
 
 2. **Use Kubernetes Service Discovery**: Let the gateway automatically discover and manage workers:
-   ```bash
+   ```bash Command
    python -m sglang_router.launch_router \
      --service-discovery \
      --selector app=sglang-worker \
@@ -1324,7 +1324,7 @@ The gateway supports running multiple replicas behind a load balancer for high a
 4. **Configure session affinity (optional)**: If cache efficiency is critical, configure your load balancer for session affinity based on a consistent hash of the request (e.g., user ID or API key).
 
 **Example HA Architecture:**
-```text
+```text Output
                     +-------------------+
                     |   Load Balancer   |
                     |     (L4/L7)       |
@@ -1355,7 +1355,7 @@ The gateway supports running multiple replicas behind a load balancer for high a
 
 gRPC mode provides the highest performance for SGLang workers:
 
-```bash
+```bash Command
 # Start workers in gRPC mode
 python -m sglang.launch_server \
   --model meta-llama/Llama-3.1-8B-Instruct \
@@ -1391,7 +1391,7 @@ python -m sglang_router.launch_router \
 
 For the gateway to discover workers automatically, label your worker pods consistently:
 
-```yaml
+```yaml Config
 # Worker Deployment (Regular Mode)
 apiVersion: apps/v1
 kind: Deployment
@@ -1422,7 +1422,7 @@ spec:
 ```
 
 **Gateway configuration for discovery:**
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --service-discovery \
   --selector app=sglang-worker component=inference \
@@ -1432,7 +1432,7 @@ python -m sglang_router.launch_router \
 
 **PD (Prefill/Decode) Mode Labeling:**
 
-```yaml
+```yaml Config
 # Prefill Worker
 metadata:
   labels:
@@ -1449,7 +1449,7 @@ metadata:
 ```
 
 **Gateway configuration for PD discovery:**
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --service-discovery \
   --pd-disaggregation \
@@ -1462,7 +1462,7 @@ python -m sglang_router.launch_router \
 
 The gateway needs permissions to watch pods:
 
-```yaml
+```yaml Config
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -1495,7 +1495,7 @@ Configure Prometheus to scrape the gateway metrics endpoint (default: `:29000/me
 **Essential Dashboards:**
 
 **1. Request Rate and Latency:**
-```sql
+```sql Example
 # Request rate by endpoint
 sum(rate(smg_http_requests_total[5m])) by (path, method)
 
@@ -1510,7 +1510,7 @@ sum(rate(smg_http_responses_total{status=~"5.."}[5m])) / sum(rate(smg_http_respo
 ```
 
 **2. Worker Health:**
-```sql
+```sql Example
 # Healthy workers
 sum(smg_worker_pool_size)
 
@@ -1522,7 +1522,7 @@ sum(rate(smg_worker_health_checks_total{result="failure"}[5m])) by (worker_id)
 ```
 
 **3. Circuit Breaker Status:**
-```sql
+```sql Example
 # Circuit breaker states (0=closed, 1=open, 2=half-open)
 smg_worker_cb_state
 
@@ -1534,7 +1534,7 @@ count(smg_worker_cb_state == 1)
 ```
 
 **4. Inference Performance (gRPC mode):**
-```sql
+```sql Example
 # Time to first token (P50)
 histogram_quantile(0.50, sum(rate(smg_router_ttft_seconds_bucket[5m])) by (le, model))
 
@@ -1549,7 +1549,7 @@ histogram_quantile(0.95, sum(rate(smg_router_generation_duration_seconds_bucket[
 ```
 
 **5. Rate Limiting and Queuing:**
-```sql
+```sql Example
 # Rate limit rejections
 sum(rate(smg_http_rate_limit_total{decision="rejected"}[5m]))
 
@@ -1564,7 +1564,7 @@ sum(rate(smg_worker_retries_exhausted_total[5m]))
 ```
 
 **6. MCP Tool Execution:**
-```sql
+```sql Example
 # Tool call rate
 sum(rate(smg_mcp_tool_calls_total[5m])) by (server, tool)
 
@@ -1577,7 +1577,7 @@ smg_mcp_servers_active
 
 **Alerting Rules Example:**
 
-```yaml
+```yaml Config
 groups:
 - name: sglang-gateway
   rules:
@@ -1689,7 +1689,7 @@ Reduce `--max-tree-size` or lower `--eviction-interval-secs` for more aggressive
 
 ### Debugging
 
-```bash
+```bash Command
 python -m sglang_router.launch_router \
   --worker-urls http://worker1:8000 \
   --log-level debug \

@@ -14,7 +14,7 @@ SGLang provides robust support for embedding models by integrating efficient ser
 
 <Steps>
   <Step title="Launch the server">
-    ```bash
+    ```bash Command
     python3 -m sglang.launch_server \
       --model-path Qwen/Qwen3-Embedding-4B \
       --is-embedding \
@@ -24,7 +24,7 @@ SGLang provides robust support for embedding models by integrating efficient ser
   </Step>
 
   <Step title="Send a client request">
-    ```python
+    ```python Example
     import requests
 
     url = "http://127.0.0.1:30000"
@@ -48,7 +48,7 @@ For multimodal models like GME that support both text and images:
 
 <Steps>
   <Step title="Launch the server with a multimodal model">
-    ```bash
+    ```bash Command
     python3 -m sglang.launch_server \
       --model-path Alibaba-NLP/gme-Qwen2-VL-2B-Instruct \
       --is-embedding \
@@ -59,7 +59,7 @@ For multimodal models like GME that support both text and images:
   </Step>
 
   <Step title="Send a multimodal request">
-    ```python
+    ```python Example
     import requests
 
     url = "http://127.0.0.1:30000"
@@ -90,7 +90,7 @@ For multimodal models like GME that support both text and images:
   <Step title="Launch a Matryoshka-capable model">
     If the model config already includes `matryoshka_dimensions` or `is_matryoshka` then no override is needed. Otherwise, use `--json-model-override-args` as below:
 
-    ```bash
+    ```bash Command
     python3 -m sglang.launch_server \
       --model-path Qwen/Qwen3-Embedding-0.6B \
       --is-embedding \
@@ -106,7 +106,7 @@ For multimodal models like GME that support both text and images:
   </Step>
 
   <Step title="Make requests with different output dimensions">
-    ```python
+    ```python Example
     import requests
 
     url = "http://127.0.0.1:30000"
