@@ -2,6 +2,8 @@
 title: Qwen3.5
 ---
 
+import { Qwen35Deployment } from '/src/snippets/autoregressive/qwen35-deployment.jsx'
+
 ## 1. Model Introduction
 
 [Qwen3.5-397B-A17B](https://huggingface.co/Qwen/Qwen3.5-397B-A17B) is the latest flagship model in the Qwen series developed by Alibaba, representing a significant leap forward with unified vision-language foundation, efficient hybrid architecture, and scalable reinforcement learning.
@@ -45,7 +47,7 @@ This section provides deployment configurations optimized for different hardware
 
 **Interactive Command Generator**: Use the configuration selector below to automatically generate the appropriate deployment command for your hardware platform and capabilities.
 
-> Note: The interactive config generator component is not available in this build.
+<Qwen35Deployment />
 
 ### 3.2 Configuration Tips
 
@@ -60,11 +62,32 @@ This section provides deployment configurations optimized for different hardware
 - **Multimodal Attention Backend**: Use `--mm-attention-backend fa3` on H100/H200 for better vision performance, or `--mm-attention-backend fa4` on B200.
 - For processing large images or videos, you may need to lower `--mem-fraction-static` to leave room for image feature tensors.
 
-| Hardware | TP  |
-| -------- | --- |
-| H100     | 16  |
-| H200     | 8   |
-| B200     | 8   |
+<table style={{width: "100%", borderCollapse: "collapse", tableLayout: "fixed"}}>
+  <colgroup>
+    <col style={{width: "50%"}} />
+    <col style={{width: "50%"}} />
+  </colgroup>
+  <thead>
+    <tr style={{borderBottom: "2px solid #d55816"}}>
+      <th style={{textAlign: "left", padding: "10px 12px", fontWeight: 700, whiteSpace: "nowrap", backgroundColor: "rgba(255,255,255,0.02)"}}>Hardware</th>
+      <th style={{textAlign: "left", padding: "10px 12px", fontWeight: 700, whiteSpace: "nowrap", backgroundColor: "rgba(255,255,255,0.05)"}}>TP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{padding: "9px 12px", fontWeight: 500, backgroundColor: "rgba(255,255,255,0.02)"}}>H100</td>
+      <td style={{padding: "9px 12px", backgroundColor: "rgba(255,255,255,0.05)"}}>16</td>
+    </tr>
+    <tr>
+      <td style={{padding: "9px 12px", fontWeight: 500, backgroundColor: "rgba(255,255,255,0.02)"}}>H200</td>
+      <td style={{padding: "9px 12px", backgroundColor: "rgba(255,255,255,0.05)"}}>8</td>
+    </tr>
+    <tr>
+      <td style={{padding: "9px 12px", fontWeight: 500, backgroundColor: "rgba(255,255,255,0.02)"}}>B200</td>
+      <td style={{padding: "9px 12px", backgroundColor: "rgba(255,255,255,0.05)"}}>8</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 4. Model Invocation
 

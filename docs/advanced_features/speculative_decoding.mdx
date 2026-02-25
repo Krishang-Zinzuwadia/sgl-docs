@@ -10,11 +10,32 @@ SGLang now provides an EAGLE-based (EAGLE-2/EAGLE-3) speculative decoding option
 Please see below for the huge improvements on throughput for LLaMA-Instruct 3.1 8B tested on MT bench that can be achieved via EAGLE3 decoding.
 For further details please see the [EAGLE3 paper](https://arxiv.org/pdf/2503.01840).
 
-| Method | Throughput (tokens/s) |
-|--------|----------------|
-| SGLang (w/o speculative, 1x H100) | 158.34 tokens/s |
-| SGLang + EAGLE-2 (1x H100) | 244.10 tokens/s |
-| SGLang + EAGLE-3 (1x H100) | 373.25 tokens/s |
+<table style={{width: "100%", borderCollapse: "collapse", tableLayout: "fixed"}}>
+  <colgroup>
+    <col style={{width: "50%"}} />
+    <col style={{width: "50%"}} />
+  </colgroup>
+  <thead>
+    <tr style={{borderBottom: "2px solid #d55816"}}>
+      <th style={{textAlign: "left", padding: "10px 12px", fontWeight: 700, whiteSpace: "nowrap", backgroundColor: "rgba(255,255,255,0.02)"}}>Method</th>
+      <th style={{textAlign: "left", padding: "10px 12px", fontWeight: 700, whiteSpace: "nowrap", backgroundColor: "rgba(255,255,255,0.05)"}}>Throughput (tokens/s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{padding: "9px 12px", fontWeight: 500, backgroundColor: "rgba(255,255,255,0.02)"}}>SGLang (w/o speculative, 1x H100)</td>
+      <td style={{padding: "9px 12px", backgroundColor: "rgba(255,255,255,0.05)"}}>158.34 tokens/s</td>
+    </tr>
+    <tr>
+      <td style={{padding: "9px 12px", fontWeight: 500, backgroundColor: "rgba(255,255,255,0.02)"}}>SGLang + EAGLE-2 (1x H100)</td>
+      <td style={{padding: "9px 12px", backgroundColor: "rgba(255,255,255,0.05)"}}>244.10 tokens/s</td>
+    </tr>
+    <tr>
+      <td style={{padding: "9px 12px", fontWeight: 500, backgroundColor: "rgba(255,255,255,0.02)"}}>SGLang + EAGLE-3 (1x H100)</td>
+      <td style={{padding: "9px 12px", backgroundColor: "rgba(255,255,255,0.05)"}}>373.25 tokens/s</td>
+    </tr>
+  </tbody>
+</table>
 
 
 ## EAGLE Decoding
