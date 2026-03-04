@@ -6,8 +6,8 @@ description: Run one-off generation tasks and launch the HTTP server from the co
 
 The `sglang` CLI provides two main subcommands for diffusion inference:
 
-- **`sglang generate`** â€” run a one-off generation without a persistent server
-- **`sglang serve`** â€” launch the OpenAI-compatible HTTP server
+- **`sglang generate`** -- run a one-off generation without a persistent server
+- **`sglang serve`** -- launch the OpenAI-compatible HTTP server
 
 ## Prerequisites
 
@@ -64,8 +64,8 @@ SERVER_ARGS=(
 sglang serve "${SERVER_ARGS[@]}"
 ```
 
-- `--model-path` â€” which model to load (e.g. `Wan-AI/Wan2.1-T2V-1.3B-Diffusers`)
-- `--port` â€” HTTP port to listen on (default: `30010`)
+- `--model-path` -- which model to load (e.g. `Wan-AI/Wan2.1-T2V-1.3B-Diffusers`)
+- `--port` -- HTTP port to listen on (default: `30010`)
 
 For full API usage including image/video generation and LoRA management, see the [OpenAI API documentation](./openai-api).
 
@@ -146,11 +146,11 @@ For example, 5 original frames with `exp=1` â†’ 4 gaps Ã— 1 new frame + 
 | Argument | Description |
 |:--|:--|
 | `--enable-frame-interpolation` | Enable frame interpolation. Model weights are downloaded automatically on first use |
-| `--frame-interpolation-exp EXP` | Interpolation exponent â€” `1` = 2Ã— temporal resolution, `2` = 4Ã—, etc. (default: `1`) |
+| `--frame-interpolation-exp EXP` | Interpolation exponent -- `1` = 2Ã— temporal resolution, `2` = 4Ã—, etc. (default: `1`) |
 | `--frame-interpolation-scale SCALE` | RIFE inference scale; use `0.5` for high-resolution inputs to save memory (default: `1.0`) |
 | `--frame-interpolation-model-path PATH` | Local directory or HuggingFace repo ID containing RIFE `flownet.pkl` weights (default: `elfgum/RIFE-4.22.lite`, downloaded automatically) |
 
-**Example** â€” generate a 5-frame video and interpolate to 9 frames ($(5 - 1) \times 2^1 + 1 = 9$):
+**Example** -- generate a 5-frame video and interpolate to 9 frames ($(5 - 1) \times 2^1 + 1 = 9$):
 
 ```bash
 sglang generate \
